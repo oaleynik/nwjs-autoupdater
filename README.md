@@ -24,7 +24,7 @@ Full list of the platforms and archetectures, which is possible to cross-compile
 
 Let's consider the small example to see how it can be used.
 
-- Start application from the index.js (instead of directly pointing it to the .html file)
+- Start application from the index.js (instead of directly pointing it to the .html file) ([Example](https://github.com/oaleynik/nwjs-tiny-updater/blob/master/examples/index.js))
 - Open main window (so user will not have to wait)
 - Create temporary folder in the system's temp directory (let's call it T)
 - Create `updates` folder in the T folder.
