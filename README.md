@@ -10,7 +10,7 @@ There were several attempts to solve this problem. For example - https://github.
 This tiny golang application (when built it is just ~2MB) can be bundled with your NWJS application and then used to unpack updates.
 To update target application updater needs to know two things - where zip archive with the new version is located and where is the app's executable to restart application after update. These can be passed to updater via command line arguments `--bundle` and `--inst-dir`, where `--bundle` is the path to the zip archive with the new app version and `--inst-dir` is the path to app's executable.  
 
-#### Build
+### Build
 
 Run `GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o autoupdater` to build for OSX.  
 Run `GOOS=windows GOARCH=386 go build -ldflags "-s -w -H=windowsgui" -o autoupdater.exe` to build for Win32.  
@@ -55,7 +55,7 @@ Due to the fact that we copy and run updater from the temp directory - any files
 
 Autoupdates on windows were really painfull. All those "Run as Administrator" and issues with replacing executable, which is running :( But, this tiny updater solves this issue too. In the root of the repo you can find `updater.exe.manifest`, which defines metadata of the binary and one important (for Windows) thing - permissions level. The line `<requestedExecutionLevel level="asInvoker" uiAccess="false"/>` will allow your app to run updater on windows without admin rights. To embed this information in your updater's binary you need to use `https://github.com/akavel/rsrc` - amazing tool for embedding binary resources in Go programs. Also you can pass the path to the .ico file and updater's binary will get a nice icon ;)
 
-### Why golang
+### Why golang?
 
 Because it is simple and more importantly - it can be compiled from any platform for any platform.
 
