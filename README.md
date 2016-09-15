@@ -1,4 +1,4 @@
-*Tiny go lang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates."*
+*Tiny golang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates."*
 
 ### Problem 
 
