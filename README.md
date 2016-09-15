@@ -5,8 +5,20 @@ Tiny go lang app, which can be bundled with your NWJS application (actually, any
 NWJS is amazing platform for building desktop applications using web technologies. However, it is missing one important feature - an ability to seamlesly deliver updates for users.
 There were several attempts to solve this problem. For example - https://github.com/edjafarov/node-webkit-updater. But it does have issues when updater itself needs to be updated or NWJS platform needs to be updated (https://github.com/nwjs/nw.js/issues/233).  
 
+### Solution
+
 This tiny golang application (when built it is just ~2MB) can be bundled with your NWJS application and then used to unpack updates.
 To update target application updater needs to know two things - where zip archive with the new version is located and where is the app's executable to restart application after update. These can be passed to updater via command line arguments `--bundle` and `--inst-dir`, where `--bundle` is the path to the zip archive with the new app version and `--inst-dir` is the path to app's executable.  
+
+#### Build
+
+Run `GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o autoupdater` to build for OSX.  
+Run `GOOS=windows GOARCH=386 go build -ldflags "-s -w -H=windowsgui" -o autoupdater.exe` to build for Win32.  
+Run `GOOS=windows GOARCH=amd64 go build -ldflags "-s -w -H=windowsgui" -o autoupdater.exe` to build for Win64.  
+
+Full list of the platforms and archetectures, which is possible to cross-compile to can be found here https://github.com/golang/go/blob/master/src/go/build/syslist.go
+
+### Example
 
 Let's consider the small example to see how it can be used.
 
