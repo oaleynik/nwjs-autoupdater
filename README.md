@@ -48,11 +48,11 @@ Autoupdates on windows were really painfull. All those "Run as Administrator" an
 Because it is simple and more importantly - it can be compiled from any platform for any platform.
 
 ### Credits
-I'm not very proficient in the golang (yet) so I've used and slitly modified several packages from the go community (all credits are going to them):
+I'm not very proficient in the golang (yet) so I've used and slightly modified several packages from the go community (all credits are going to them):
 
-https://github.com/skratchdot/open-golang - Open a file, directory, or URI using the OS's default application for that object type. Optionally, you can specify an application to use.
-https://github.com/ivaxer/go-xattr - Extended attribute support for Go #golang
-And very simple zip unpacker (can't find the source)
+https://github.com/skratchdot/open-golang - Open a file, directory, or URI using the OS's default application for that object type. Optionally, you can specify an application to use.  
+https://github.com/ivaxer/go-xattr - Extended attribute support for Go #golang  
+And very simple zip unpacker (can't find the source)  
 
 ### Final word
 I really hope that we will have something like this out-of-the box in NWJS!
