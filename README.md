@@ -1,4 +1,4 @@
-Tiny go lang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates."
+*Tiny go lang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates."*
 
 ### Problem 
 
@@ -11,6 +11,8 @@ This tiny golang application (when built it is just ~2MB) can be bundled with yo
 To update target application updater needs to know two things - where zip archive with the new version is located and where is the app's executable to restart application after update. These can be passed to updater via command line arguments `--bundle` and `--inst-dir`, where `--bundle` is the path to the zip archive with the new app version and `--inst-dir` is the path to app's executable.  
 
 ### Build
+
+First of all - you need to have `golang` installed and properely configured ;)
 
 Run `GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o autoupdater` to build for OSX.  
 Run `GOOS=windows GOARCH=386 go build -ldflags "-s -w -H=windowsgui" -o autoupdater.exe` to build for Win32.  
