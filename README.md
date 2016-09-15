@@ -1,0 +1,54 @@
+Tiny go lang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates."
+
+### Problem 
+
+NWJS is amazing platform for building desktop applications using web technologies. However, it is missing one important feature - an ability to seamlesly deliver updates for users.
+There were several attempts to solve this problem. For example - https://github.com/edjafarov/node-webkit-updater. But it does have issues when updater itself needs to be updated or NWJS platform needs to be updated (https://github.com/nwjs/nw.js/issues/233).  
+
+This tiny golang application (when built it is just ~2MB) can be bundled with your NWJS application and then used to unpack updates.
+To update target application updater needs to know two things - where zip archive with the new version is located and where is the app's executable to restart application after update. These can be passed to updater via command line arguments `--bundle` and `--inst-dir`, where `--bundle` is the path to the zip archive with the new app version and `--inst-dir` is the path to app's executable.  
+
+Let's consider the small example to see how it can be used.
+
+- Start application from the index.js (instead of directly pointing it to the .html file)
+- Open main window (so user will not have to wait)
+- Create temporary folder in the system's temp directory (let's call it T)
+- Create `updates` folder in the T folder.
+- Download manifest file from the remote location. It has the format, which is similar to the one used in https://github.com/edjafarov/updater. For example:
+```json
+{
+  "version": "1.1.0",
+  "createdAt": "2016-09-15T15:02:02.365Z",
+  "win32": {
+    "url": "https://example.com/windows-x32-v1.1.0.zip",
+    "sha256": "a5db62bbe2c382534162d921ae6319ae83384256ab7f40e928a323603653e22b"
+  },
+  "darwin": {
+    "url": "https://example.com/darwin-x64-v1.1.0.zip",
+    "sha256": "e9efa23c40cf17a1d0c77227c962b5659c099959ec199782e03f162dcbbdae19"
+  }
+}
+```
+- Compare local app's version with the one from manifest file
+- If app has the latest version from manifest - do nothing
+- If app is outdated - download zip archive to the `updates` folder created before. When it is downloaded - show notification for user using `new Notification` or `chrome.notifications.create`. If user clicks on notification - proceed.
+- Copy `bundled updater executable` to the folder T (don't move it because temp folders sometimes can be, you know, - cleaned :)
+- Run copy of the updater executable using `spawn` in detached mode and close application. Pass path to the downloaded archive and path to the main app executable to updater using command line arguments.
+- When updater starts it unpacks zip archive to the temp directory. Than it creates backup of the old app by renaming parent directory to .bak (on macOS the Application.app will be renamed itself)
+- Move unpacked files to the new location. If all went well - delete bak, delete temp files, delete zip archive and start main application.
+
+Due to the fact that we copy and run updater from the temp directory - any files in application can be updated!
+
+### Why golang
+
+Because it is simple and more importantly - it can be compiled from any platform for any platform.
+
+### Credits
+I'm not very proficient in the golang (yet) so I've used and slitly modified several packages from the go community (all credits are going to them):
+
+https://github.com/skratchdot/open-golang - Open a file, directory, or URI using the OS's default application for that object type. Optionally, you can specify an application to use.
+https://github.com/ivaxer/go-xattr - Extended attribute support for Go #golang
+And very simple zip unpacker (can't find the source)
+
+### Final word
+I really hope that we will have something like this out-of-the box in NWJS!
