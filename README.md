@@ -39,6 +39,10 @@ Let's consider the small example to see how it can be used.
 
 Due to the fact that we copy and run updater from the temp directory - any files in application can be updated!
 
+### Windows updates
+
+Autoupdates on windows were really painfull. All those "Run as Administrator" and issues with replacing executable, which is running :( But, this tiny updater solves this issue too. In the root of the repo you can find `updater.exe.manifest`, which defines metadata of the binary and one important (for Windows) thing - permissions level. The line `<requestedExecutionLevel level="asInvoker" uiAccess="false"/>` will allow your app to run updater on windows without admin rights. To embed this information in your updater's binary you need to use `https://github.com/akavel/rsrc` - amazing tool for embedding binary resources in Go programs. Also you can pass the path to the .ico file and updater's binary will get a nice icon ;)
+
 ### Why golang
 
 Because it is simple and more importantly - it can be compiled from any platform for any platform.
