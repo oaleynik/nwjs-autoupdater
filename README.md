@@ -1,4 +1,4 @@
-*Tiny golang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates."*
+*Tiny golang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates." I really hope that we will have something like this out-of-the box in NWJS!*
 
 ### Problem 
 
@@ -67,6 +67,3 @@ I'm not very proficient in the golang (yet) so I've used and slightly modified s
 https://github.com/skratchdot/open-golang - Open a file, directory, or URI using the OS's default application for that object type. Optionally, you can specify an application to use.  
 https://github.com/ivaxer/go-xattr - Extended attribute support for Go #golang  
 And very simple zip unpacker (can't find the source)  
-
-### Final word
-I really hope that we will have something like this out-of-the box in NWJS!
