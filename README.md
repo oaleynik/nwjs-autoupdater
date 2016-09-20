@@ -2,7 +2,7 @@
 
 ### Problem 
 
-NWJS is amazing platform for building desktop applications using web technologies. However, it is missing one important feature - an ability to seamlesly deliver updates for users.
+NWJS is amazing platform for building desktop applications using web technologies. However, it is missing one important feature - an ability to seamlessly deliver updates for users.
 There were several attempts to solve this problem. For example - https://github.com/edjafarov/node-webkit-updater. But it does have issues when updater itself needs to be updated or NWJS platform needs to be updated (https://github.com/nwjs/nw.js/issues/233).  
 
 ### Solution
