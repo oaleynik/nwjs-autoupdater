@@ -12,13 +12,21 @@ To update target application updater needs to know two things - where zip archiv
 
 ### Build
 
-First of all - you need to have `golang` installed and properely configured ;)
+1) You need to have `golang` installed and properely configured ;)  
+2) Ensure that you have proper information in the manifest file describing your application. Make sure that requested execution level is set to `asInvoker`. **Without it your main app will not be able to run autoupdater**.  
+3) Install `go get github.com/akavel/rsrc`  
+4) Compile your manifest file into `.syso` file using `rsrc` tool. For example:
+```
+    rsrc -manifest updater.exe.manifest [-ico FILE.ico[,FILE2.ico...]] -o updater.syso
+```
+5) Build autoupdater binaries for using one of the following commands (for OSX, Win32 and Win64 respectively):  
+```
+    GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o updater 
+    GOOS=windows GOARCH=386 go build -ldflags "-s -w -H=windowsgui" -o updater.exe
+    GOOS=windows GOARCH=amd64 go build -ldflags "-s -w -H=windowsgui" -o updater.exe
+```
 
-Run `GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o autoupdater` to build for OSX.  
-Run `GOOS=windows GOARCH=386 go build -ldflags "-s -w -H=windowsgui" -o autoupdater.exe` to build for Win32.  
-Run `GOOS=windows GOARCH=amd64 go build -ldflags "-s -w -H=windowsgui" -o autoupdater.exe` to build for Win64.  
-
-Full list of the platforms and archetectures, which is possible to cross-compile to can be found here https://github.com/golang/go/blob/master/src/go/build/syslist.go
+> Full list of the platforms and archetectures, which is possible to cross-compile to can be found here https://github.com/golang/go/blob/master/src/go/build/syslist.go
 
 ### Example
 
