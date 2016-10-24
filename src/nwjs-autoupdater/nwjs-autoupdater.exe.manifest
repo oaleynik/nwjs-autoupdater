@@ -3,10 +3,10 @@
 <assemblyIdentity
     version="1.0.0.0"
     processorArchitecture="x86"
-    name="updater.exe"
+    name="nwjs-autoupdater.exe"
     type="win32"
 />
-<description>My App Updater</description>
+<description>NWJS Autoupdater</description>
 <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">
     <security>
         <requestedPrivileges>
