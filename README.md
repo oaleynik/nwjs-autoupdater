@@ -1,3 +1,5 @@
+**README IS OUTDATED. IT WILL BE UPDATED SOON**
+
 *Tiny golang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates." I really hope that we will have something like this out-of-the box in NWJS!*
 
 ### Problem 
