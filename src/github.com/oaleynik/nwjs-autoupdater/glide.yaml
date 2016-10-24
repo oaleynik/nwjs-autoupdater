@@ -1,0 +1,7 @@
+package: github.com/oaleynik/nwjs-autoupdater
+import:
+- package: github.com/ivaxer/go-xattr
+- package: github.com/mholt/archiver
+- package: github.com/skratchdot/open-golang
+  subpackages:
+  - open
