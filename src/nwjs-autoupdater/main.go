@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/skratchdot/open-golang/open"
-	"github.com/oaleynik/nwjs-autoupdater/updater"
+	"nwjs-autoupdater/updater"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-package: github.com/oaleynik/nwjs-autoupdater
+package: nwjs-autoupdater
 import:
 - package: github.com/ivaxer/go-xattr
 - package: github.com/mholt/archiver

@@ -1,5 +1,5 @@
-hash: b01b4ddbd68cfa26ec2a54e8fbb8a655e028fc364a9b72d423f407b3a41c595d
-updated: 2016-10-24T18:53:49.519376637+03:00
+hash: 0c7b94ae5b22c2fc22b68a8dc5ef928fd23f67b38ecf89c6cf2a14a924d46c80
+updated: 2016-10-24T19:18:48.011195841+03:00
 imports:
 - name: github.com/dsnet/compress
   version: b9aab3c6a04eef14c56384b4ad065e7b73438862
