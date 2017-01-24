@@ -17,7 +17,7 @@ To update target application updater needs to know two things - where zip archiv
 3) Install rsrc `go get github.com/akavel/rsrc`  
 4) Clone this repo  
 5) Go to src/nwjs-autoupdater and edit `nwjs-autoupdater.exe.manifest` as you like. WARNING: don't touch the `requestedExecutionLevel` value.  
-6) Execute `rsrc -manifest nwjs-autoupdater.exe.manifest -ico <path to your icon> -o nwjs-autoupdater.syso` to generate a .syso file with specified resources embedded  
+6) Execute `rsrc -manifest nwjs-autoupdater.exe.manifest -ico <path to your icon> -o nwjs-autoupdater.syso` to generate a .syso file with specified resources embedded and to make it WORK ON WINDOWS.
 7) Execute `glide install` to install dependencies  
 8) Go back to the root folder and run `GOPATH=$(pwd) go build nwjs-autoupdater` to build for current platform. To build for other platforms use appropriate flags:  
 ```
