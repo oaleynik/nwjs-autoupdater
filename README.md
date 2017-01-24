@@ -1,5 +1,3 @@
-**README IS OUTDATED. IT WILL BE UPDATED SOON**
-
 *Tiny golang app, which can be bundled with your NWJS application (actually, any application) and used for "autoupdates." I really hope that we will have something like this out-of-the box in NWJS!*
 
 ### Problem 
@@ -15,13 +13,13 @@ To update target application updater needs to know two things - where zip archiv
 ### Build
 
 1) You need to have `golang` installed and properely configured ;)  
-2) Ensure that you have proper information in the manifest file describing your application. Make sure that requested execution level is set to `asInvoker`. **Without it your main app will not be able to run autoupdater**.  
-3) Install `go get github.com/akavel/rsrc`  
-4) Compile your manifest file into `.syso` file using `rsrc` tool. For example:
-```
-    rsrc -manifest updater.exe.manifest [-ico FILE.ico[,FILE2.ico...]] -o updater.syso
-```
-5) Build autoupdater binaries for using one of the following commands (for OSX, Win32 and Win64 respectively):  
+2) Install `glide` https://github.com/Masterminds/glide#install
+3) Install rsrc `go get github.com/akavel/rsrc`
+4) Clone this repo
+5) Go to src/nwjs-autoupdater and edit `nwjs-autoupdater.exe.manifest` as you like. WARNING: don't touch the `requestedExecutionLevel` value.
+6) Execute `rsrc -manifest nwjs-autoupdater.exe.manifest -ico <path to your icon> -o nwjs-autoupdater.syso` to generate a .syso file with specified resources embedded
+7) Execute `glide install` to install dependencies
+8) Go back to the root folder and run `GOPATH=$(pwd) go build nwjs-autoupdater` to build for current platform. To build for other platforms use appropriate flags:
 ```
     GOOS=darwin GOARCH=amd64 go build -ldflags "-s -w" -o updater 
     GOOS=windows GOARCH=386 go build -ldflags "-s -w -H=windowsgui" -o updater.exe
