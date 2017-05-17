@@ -15,7 +15,7 @@ func main() {
 
 	flag.StringVar(&bundle, "bundle", "", "Path to the update package")
 	flag.StringVar(&instDir, "inst-dir", "", "Path to the application install dir")
-	flag.StringVar(&appName, "app-name", "", "Application executable name")
+	flag.StringVar(&appName, "app-name", "my_app", "Application executable name")
 	flag.Parse()
 
 	cwd, _ := os.Getwd()
