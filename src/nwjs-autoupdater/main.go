@@ -11,13 +11,12 @@ import (
 )
 
 func main() {
-	var bundle, instDir string
+	var bundle, instDir, appName string
 
 	flag.StringVar(&bundle, "bundle", "", "Path to the update package")
 	flag.StringVar(&instDir, "inst-dir", "", "Path to the application install dir")
+	flag.StringVar(&appName, "app-name", "my_app", "Application executable name")
 	flag.Parse()
-
-	appName := "my_app"
 
 	cwd, _ := os.Getwd()
 	logfile, err := os.Create(filepath.Join(cwd, "updater.log"))
