@@ -1,19 +1,8 @@
-hash: 0c7b94ae5b22c2fc22b68a8dc5ef928fd23f67b38ecf89c6cf2a14a924d46c80
-updated: 2016-10-24T19:18:48.011195841+03:00
+hash: 089db5d58dcce28444163bee5aa2289bca80bae995ed56bbef7333582cd58fb9
+updated: 2017-06-14T18:40:00.127652081+03:00
 imports:
-- name: github.com/dsnet/compress
-  version: b9aab3c6a04eef14c56384b4ad065e7b73438862
-  subpackages:
-  - bzip2
-  - bzip2/internal/sais
-  - internal
-  - internal/prefix
 - name: github.com/ivaxer/go-xattr
-  version: 1a541654d8e447148cf23d472c948f9f0078ac50
-- name: github.com/mholt/archiver
-  version: 4a8a092653655d29c8e091cf2ecf91cbe697f0de
-- name: github.com/nwaples/rardecode
-  version: f94841372ddc36be531a5c3e1206238e32e93d74
+  version: d205d0a1b9316c5abcfc61b261d5312301b33e4d
 - name: github.com/skratchdot/open-golang
   version: 75fb7ed4208cf72d323d7d02fd1a5964a7a9073c
   subpackages:
