@@ -4,8 +4,8 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"nwjs-autoupdater/unzip"
 
-	"github.com/mholt/archiver"
 	"github.com/ivaxer/go-xattr"
 )
 
@@ -21,7 +21,7 @@ func Update(bundle, instDir, appName string) (error, string) {
 	}
 	defer os.RemoveAll(tempDir)
 
-  err = archiver.Zip.Open(bundle, tempDir)
+  err = unzip.Unzip(bundle, tempDir)
 	if err != nil {
 		return err, appExec
 	}
