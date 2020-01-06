@@ -7,10 +7,16 @@ const {execPath, platform} = process;
 const semver = nw.require('semver');
 const shell = nw.require('shelljs');
 
+// Filename of Application (exe to run after updation)
+const AppExecName='ApplicationName';
+// Filename for Updater
+const AppUpdaterName='updater';
+
+// temp directory details
 const SYSTEM_TEMP_DIR = tmpdir();
 const UPDATER_TEMP_DIR = resolve(SYSTEM_TEMP_DIR, 'my-app-updater');
 const UPDATES_DIR = resolve(UPDATER_TEMP_DIR, 'updates');
-const UPDATER_BIN = resolve(UPDATER_TEMP_DIR, /^win/.test(platform) ? 'updater.exe' : 'updater');
+const UPDATER_BIN = resolve(UPDATER_TEMP_DIR, /^win/.test(platform) ? AppUpdaterName + '.exe' : AppUpdaterName);
 
 shell.mkdir('-p', UPDATES_DIR);
 
@@ -21,6 +27,17 @@ const {
   appInstDir,
   bundledUpdaterPath,
 } = resolvePaths(execPath, platform);
+
+/*  TO RUN AS BACKGROUND APPLICATION
+
+run('src/view/index.html', appManifest.window)
+  .then(() => {
+    const win = nw.Window.get();
+    win.hide()
+})
+
+*/
+
 
 run('index.html', appManifest.window)
   .then(() => {
@@ -58,12 +75,12 @@ function resolvePaths (execPath, platform) {
   } else if (platform === 'win32') {
     appDir = dirname(execPath);
     appInstDir = appDir;
-    appExec = resolve(appDir, 'MyApp.exe');
+    appExec = resolve(appDir, AppExecName + '.exe');
     bundledUpdaterPath = resolve(appDir, 'updater.exe');
   } else {
     appDir = dirname(execPath);
     appInstDir = appDir;
-    appExec = resolve(appDir, 'MyApp');
+    appExec = resolve(appDir, AppExecName);
     bundledUpdaterPath = resolve(appDir, 'updater');
   }
 
@@ -84,6 +101,7 @@ function startUpdate (bundlePath) {
   shell.chmod(755 & ~process.umask(), UPDATER_BIN);
 
   spawn(UPDATER_BIN, [
+    '--app-name', AppExecName,
     '--bundle', bundlePath,
     '--inst-dir', appInstDir,
   ], {

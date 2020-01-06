@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-
+	"time"
 	"github.com/skratchdot/open-golang/open"
 	"nwjs-autoupdater/updater"
 )
@@ -24,6 +24,8 @@ func main() {
 		panic(err)
 	}
 	defer logfile.Close()
+
+	time.Sleep(2 * time.Second)
 
 	logger := log.New(logfile, "", log.LstdFlags)
 
